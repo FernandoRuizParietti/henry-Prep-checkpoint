@@ -5,7 +5,23 @@ function menorMayor(numeros) {
   // Escribi una función llamada menorMayor que tome como entrada un arreglo de números y devuelva un arreglo 
   // que contenga el menor número del arreglo en la posición cero y el mayor número del arreglo en la posición 1.
   // Ej: menorMayor([4, 6, 1, 7, 15]) // retorna [1, 15]
-
+    var final = [];
+    var menor=9999999;
+    var mayor=0;
+    for (var i=0; i<numeros.length ; i++){
+              if (menor>numeros[i]){
+                menor=numeros[i];
+              }
+    }
+    for (var i=0; i<numeros.length ; i++){
+      if (mayor<numeros[i]){
+        mayor=numeros[i];
+      }
+    }
+    final[0]=menor;
+    final[1]=mayor;
+  
+    return final;
 }
 
 function stringMasLarga(strings) {
@@ -14,8 +30,16 @@ function stringMasLarga(strings) {
   // Ej:
   // stringMasLarga(['hi', 'hello', 'ni hao', 'guten tag']); // returns 'guten tag'
   // stringMasLarga(['JavaScript', 'HTML', 'CSS']); // returns 'JavaScript'
-
+  
+  var Larga = '';
+    for( var i=0; i<strings.length; i++){
+      if (Larga.length < strings[i].length){
+        Larga= strings[i];
+      }
+    }
+return Larga;
 }
+
 
 function buscarAmigo(amigos, nombre) {
   // Escribe una funcion que reciba un array de amigos (objetos) y un nombre (string).
@@ -25,6 +49,19 @@ function buscarAmigo(amigos, nombre) {
   //  var amigos = [{ nombre: 'toni', edad: 33 } , { nombre: 'Emi', edad: 25 }];
   //  buscarAmigo(amigos, 'toni') // retorna { nombre: 'toni', edad: 33 };
   
+  const devolver ={
+                    nombre:'',
+                    edad:'',
+  }
+  for (var i=0; i<amigos.length; i++){
+        for (let nombre in amigos){
+            if (amigos.nombre === 'nombre') {
+                  devolver.nombre= amigos.nombre;
+                  devolver.edad= amigos.edad;
+             }
+          }
+      }
+    return devolver;
 }
 
 function sumArray(array, n) {
@@ -35,8 +72,17 @@ function sumArray(array, n) {
   // sumArray([2,5,7,10,11,15,20], 13)  // retorna true     2+11 suman 13
   // sumArray([2,5,7,10,11,15,20], 14)  // retorna false
   // pista: podes usar bucles anidados;
-  
-};
+  var num=0
+  for (var i=0; i<array.length; i++){
+              num= array[i];
+              for (var x=i+1; x<array.length; x++){
+                    if(num+array[x]===n){
+                        return true;
+                      }
+                  }
+        }                
+  return false;
+}
 
 function pluck(array, propiedad) { 
   // Escribi una función llamada pluck,
@@ -47,7 +93,16 @@ function pluck(array, propiedad) {
   // productos.pluck(productos, 'name') // ['TV LCD', 'Computadora']
   // pista: es una buena oportunidad para usar map.
   
-  
+  var nuevoarray = array.map(function(productos){
+     return productos.propiedad;
+  })
+  console.log(nuevoarray);
+
+  //var nuevoarray = [];
+  //  for(var i=0; i<array.length; i++){
+  //    nuevoarray.push(array[i].propiedad);
+  //  }
+  //  return nuevoarray;
 }
 
 // =======================================================================
@@ -59,10 +114,22 @@ function crearClasePersona() {
   // nombre (string) , edad (integer) , hobbies (array de strings) , amigos (array de objetos)
   // Esta funcion debe retonar la clase Persona.
 
-  class Persona {
+ // var nombre='';
+ // var edad=0;
+ // var hobbies=[];
+ // var amigos=[{}];
+
+  class Persona {   
     constructor(nombre, edad, hobbies, amigos) {
-      
+     this.nombre=nombre;
+     this.edad=edad;
+     this.hobbies=hobbies;
+     this.amigos=amigos;
+            }
+    datos_personales(){
+      return this.nombre+ " "+ this.edad+ " " +this.hobbies+ " "+ this.amigos;
     }
+  
 
     addFriend(nombre, edad) {
       // el metodo addFriend recibe un string nombre y un entero edad y debe agregar un objeto:
