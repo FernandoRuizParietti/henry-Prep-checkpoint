@@ -18,8 +18,8 @@ function menorMayor(numeros) {
         mayor=numeros[i];
       }
     }
-    final[0]=menor;
-    final[1]=mayor;
+    final.push(menor);
+    final.push(mayor);
   
     return final;
 }
@@ -54,7 +54,6 @@ function buscarAmigo(amigos, nombre) {
                     edad:'',
   }
   for (var i=0; i<amigos.length; i++){
-        //for (let nombre in amigos){
             if (amigos[i].nombre === nombre) {
                   devolver.nombre= amigos[i].nombre;
                   devolver.edad= amigos[i].edad;
@@ -75,7 +74,7 @@ function sumArray(array, n) {
   var num=0
   for (var i=0; i<array.length; i++){
               num= array[i];
-              for (var x=i+1; x<array.length; x++){
+              for (var x=i+1; x<array.length-1; x++){
                     if(num+array[x]===n){
                         return true;
                       }
