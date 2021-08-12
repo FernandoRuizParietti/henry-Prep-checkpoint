@@ -4,7 +4,7 @@
 
 ### Fork
 
-Primero debes **forkear** este repo, haciendo click en el botón `fork` de arriba a la derecha.
+Primero debes **forkear** este repo, hacienmpdo click en el botón `fork` de arriba a la derecha.
 
 Ahora ya tenés una copia de este repo en tu cuenta de `github`.
 Cloná el repo dentro de una carpeta que vos elijas en tu compu. Una vez clonado entrá a esa carpeta y ejecutá los siguentes comandos:

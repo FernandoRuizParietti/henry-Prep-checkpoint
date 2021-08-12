@@ -54,13 +54,13 @@ function buscarAmigo(amigos, nombre) {
                     edad:'',
   }
   for (var i=0; i<amigos.length; i++){
-        for (let nombre in amigos){
-            if (amigos.nombre === 'nombre') {
-                  devolver.nombre= amigos.nombre;
-                  devolver.edad= amigos.edad;
+        //for (let nombre in amigos){
+            if (amigos[i].nombre === nombre) {
+                  devolver.nombre= amigos[i].nombre;
+                  devolver.edad= amigos[i].edad;
              }
           }
-      }
+     // }
     return devolver;
 }
 
@@ -93,16 +93,17 @@ function pluck(array, propiedad) {
   // productos.pluck(productos, 'name') // ['TV LCD', 'Computadora']
   // pista: es una buena oportunidad para usar map.
   
-  var nuevoarray = array.map(function(productos){
-     return productos.propiedad;
-  })
-  console.log(nuevoarray);
-
-  //var nuevoarray = [];
-  //  for(var i=0; i<array.length; i++){
-  //    nuevoarray.push(array[i].propiedad);
-  //  }
-  //  return nuevoarray;
+          var nuevoArray = array.map(function(product){
+              return product[propiedad];
+        })
+        return nuevoArray
+        
+ //Otra manera de hacerlo, pero con un For()
+ // var nuevoarray = [];
+ //   for(var i=0; i<array.length; i++){
+ //     nuevoarray.push(array[i][propiedad]);
+ //   }
+ // return nuevoarray;
 }
 
 // =======================================================================
@@ -114,10 +115,6 @@ function crearClasePersona() {
   // nombre (string) , edad (integer) , hobbies (array de strings) , amigos (array de objetos)
   // Esta funcion debe retonar la clase Persona.
 
- // var nombre='';
- // var edad=0;
- // var hobbies=[];
- // var amigos=[{}];
 
   class Persona {   
     constructor(nombre, edad, hobbies, amigos) {
@@ -127,7 +124,7 @@ function crearClasePersona() {
      this.amigos=amigos;
             }
     datos_personales(){
-      return this.nombre+ " "+ this.edad+ " " +this.hobbies+ " "+ this.amigos;
+      return this.nombre+ " "+ this.edad+ " " +this.hobbies+ " "+ this.amigos+" ";
     }
   
 
@@ -135,12 +132,22 @@ function crearClasePersona() {
       // el metodo addFriend recibe un string nombre y un entero edad y debe agregar un objeto:
       // { nombre: nombre, edad: edad} al arreglo de amigos de la persona.
       // no debe retornar nada.
-      
+  
+      //Persona.prototype.amigos = function(nombre, edad){
+        let amigo={
+          nombre:nombre,
+          edad:edad,
+        }
+        this.amigos.push(amigo);
+          
     }
 
     addHobby(hobby) {
       // este método debe agregar un hobby (hobby) al arreglo de hobbies de la persona.
       // no debe retornar nada.
+       
+        this.hobbies.push(hobby);
+      
       
     }
     getFriends() {
@@ -148,14 +155,24 @@ function crearClasePersona() {
       // de la persona.
       // Ej:
       // persona.getFriends() // retorna ['toni', 'Leo', 'Manu']
-      
+          
+         let names= this.amigos.map(function(x){
+              return x.nombre;
+        })
+      return names;
     }
 
     getHobbies() {
       // Escribe una función que retorne un arreglo con los hobbies de la persona
       // Ej:
       // persona.getHobbies() // retorna ['correr', 'dormir', 'nadar']
-      
+
+      let gustos= [];
+
+      for( var i=0; i< this.hobbies.length; i++){
+        gustos.push(this.hobbies[i]);
+      }
+      return gustos;
     }
 
     getPromedioEdad() {
@@ -171,6 +188,15 @@ function crearClasePersona() {
       //   }]
       // }
       // persona.getPromedioEdad() // retorna 29
+
+      var suma=0;
+      var promedio=0;
+
+      for (var i=0; i< this.amigos.length; i++){
+        suma= suma + this.amigos[i].edad;
+      }
+        promedio= suma/this.amigos.length;
+        return promedio;
     }
   };
 
